@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: polyglot.micronaut.vue
+---
+testFramework: junit
+sourceLanguage: java
