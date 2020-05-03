@@ -1,5 +1,5 @@
 profile: service
-defaultPackage: polyglot.micronaut.vue
+defaultPackage: ninckblokje.graalvm.polyglot
 ---
 testFramework: junit
 sourceLanguage: java
