@@ -1,0 +1,17 @@
+{
+  "name": "polyglot-micronaut-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve-jvm": "node --jvm --vm.cp ../../../build/libs/polyglot-micronaut-express-1.0.0-all.jar index.js",
+    "serve": "node index.js"
+  },
+  "author": "ninckblokje",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "pug": "^2.0.4"
+  }
+}

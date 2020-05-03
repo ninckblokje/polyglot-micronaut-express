@@ -24,20 +24,50 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot;
+const ApplicationClass = Java.type("ninckblokje.graalvm.pme.EmbeddedApplication")
+const application = new ApplicationClass()
 
-import io.micronaut.context.ApplicationContext;
-import io.micronaut.runtime.Micronaut;
+console.log("Starting Micronaut")
+application.runEmmbedded()
 
-public class EmbeddedApplication {
+const EventServiceClass = Java.type("ninckblokje.graalvm.pme.service.EventService")
+const polyglotEventService = application.getBean(EventServiceClass)
 
-    private ApplicationContext ctx;
+const LocalDateClass = Java.type("java.time.LocalDate")
 
-    public <T> T getBean(Class<T> beanType) {
-        return ctx.getBean(beanType);
+const formatLocalDate = function(date) {
+    return date.toString()
+}
+
+const parseLocalDate = function(date) {
+    return LocalDateClass.parse(date)
+}
+
+const mapToJsonObject = function(event) {
+    return {
+        id: event.getId(),
+        name: event.getName(),
+        organizer: event.getOrganizer(),
+        date: formatLocalDate(event.getDate()),
+        rating: event.getRating()
     }
+}
 
-    public void runEmmbedded() {
-        this.ctx = Micronaut.run(Application.class);
-    }
+module.exports.createNewEvent = function(name, organizer, date, rating) {
+    let event = polyglotEventService.createNewEvent(
+        name,
+        organizer,
+        parseLocalDate(date),
+        parseInt(rating)
+    )
+
+    return mapToJsonObject(event)
+}
+
+module.exports.getAllEvents = function() {
+    let events = []
+    polyglotEventService.getAllEvents().forEach(event => {
+        events.push(mapToJsonObject(event))
+    })
+    return events
 }

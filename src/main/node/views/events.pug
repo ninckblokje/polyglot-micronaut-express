@@ -1,0 +1,16 @@
+html
+    head
+        title= "Events"
+    body
+        table(style= "width:100%")
+            tr
+                th Name
+                th Organizer
+                th Date
+                th Rating
+            each event in events
+                tr
+                    td= event.name
+                    td= event.organizer
+                    td= event.date
+                    td= event.rating

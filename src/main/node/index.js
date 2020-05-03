@@ -24,13 +24,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot;
+const port = 3000
 
-import io.micronaut.runtime.Micronaut;
+const eventService = require('./polyglot/PolyglotEventService')
 
-public class Application {
+const express = require('express')
+const app = express()
 
-    public static void main(String[] args) {
-        Micronaut.run(Application.class);
-    }
-}
+const multer = require('multer')
+const upload = multer()
+
+app.set('view engine', 'pug')
+
+app.get('/', (req, res) => res.redirect("/events"))
+app.get('/events', (req, res) => res.render('events', { events: eventService.getAllEvents() }))
+app.get('/events/new', (req, res) => res.render('newEvent', {  }))
+
+app.post('/events/new', upload.none(), (req, res) => {
+    eventService.createNewEvent(
+        req.body.eventName,
+        req.body.eventOrganizer,
+        req.body.eventDate,
+        req.body.eventRating
+    )
+    res.redirect("/events")
+})
+
+app.listen(port, () => console.log(`polyglot-micronaut-express listening at http://localhost:${port}`))

@@ -24,14 +24,40 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot.service;
+package ninckblokje.graalvm.pme.service.impl;
 
-import ninckblokje.graalvm.polyglot.domain.Event;
+import ninckblokje.graalvm.pme.domain.Event;
+import ninckblokje.graalvm.pme.repository.EventRepository;
+import ninckblokje.graalvm.pme.service.EventService;
 
+import javax.inject.Singleton;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.List;
 
-public interface EventService {
+@Singleton
+public class EventServiceImpl implements EventService {
 
-    Event createNewEvent(String name, String organizer, String date, int rating);
-    List<Event> getAllEvents();
+    private EventRepository repository;
+
+    public EventServiceImpl(EventRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public Event createNewEvent(
+        @NotEmpty String name,
+        @NotEmpty String organizer,
+        @NotNull @PastOrPresent LocalDate date,
+        @Min(1) @Max(10) int rating
+    ) {
+        Event event = new Event(date, name, organizer, rating);
+        repository.save(event);
+        return event;
+    }
+
+    @Override
+    public List<Event> getAllEvents() {
+        return repository.findAll();
+    }
 }

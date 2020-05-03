@@ -4,7 +4,7 @@ plugins {
     id "application"
 }
 
-version "0.1"
+version "1.0.0"
 group "ninckblokje.graalvm"
 
 repositories {
@@ -42,7 +42,7 @@ dependencies {
 
 test.classpath += configurations.developmentOnly
 
-mainClassName = "ninckblokje.graalvm.polyglot.Application"
+mainClassName = "ninckblokje.graalvm.pme.Application"
 
 // use JUnit 5 platform
 test {

@@ -24,39 +24,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot.service.impl;
+package ninckblokje.graalvm.pme;
 
-import ninckblokje.graalvm.polyglot.domain.Event;
-import ninckblokje.graalvm.polyglot.repository.EventRepository;
-import ninckblokje.graalvm.polyglot.service.EventService;
+import io.micronaut.runtime.Micronaut;
 
-import javax.inject.Singleton;
-import java.time.LocalDate;
-import java.util.List;
+public class Application {
 
-@Singleton
-public class EventServiceImpl implements EventService {
-
-    private EventRepository repository;
-
-    public EventServiceImpl(EventRepository repository) {
-        this.repository = repository;
-    }
-
-    @Override
-    public Event createNewEvent(
-        String name,
-        String organizer,
-        String date,
-        int rating
-    ) {
-        Event event = new Event(LocalDate.parse(date), name, organizer, rating);
-        repository.save(event);
-        return event;
-    }
-
-    @Override
-    public List<Event> getAllEvents() {
-        return repository.findAll();
+    public static void main(String[] args) {
+        Micronaut.run(Application.class);
     }
 }

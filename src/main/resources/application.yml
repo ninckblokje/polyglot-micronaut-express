@@ -14,7 +14,7 @@ datasources:
 jpa:
   default:
     packages-to-scan:
-      - 'ninckblokje.graalvm.polyglot.domain'
+      - 'ninckblokje.graalvm.pme.domain'
     properties:
       hibernate:
         hbm2ddl:

@@ -1,0 +1,19 @@
+html
+    head
+        title= "New Event"
+    body
+        form(method="POST" action="/events/new" enctype="multipart/form-data")
+            div.form-group
+                label(for="eventName") Name:
+                input#eventName.form-control(type="text" name="eventName")
+            div.form-group
+                label(for="eventOrganizer") Organizer:
+                input#eventOrganizer.form-control(type="text" name="eventOrganizer")
+            div.form-group
+                label(for="eventDate") Date:
+                input#eventDate.form-control(type="date" name="eventDate")
+            div.form-group
+                label(for="eventRating") Rating:
+                input#eventRating.form-control(type="number" name="eventRating" value="7" min="1" max="10")
+            button.btn.btn-primary(type="submit") Create
+            button.btn(type="reset") Reset

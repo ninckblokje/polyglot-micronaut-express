@@ -24,14 +24,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot.repository;
+package ninckblokje.graalvm.pme.service;
 
-import ninckblokje.graalvm.polyglot.domain.Event;
+import ninckblokje.graalvm.pme.domain.Event;
 
+import java.time.LocalDate;
 import java.util.List;
 
-public interface EventRepository {
+public interface EventService {
 
-    List<Event> findAll();
-    Long save(Event event);
+    Event createNewEvent(String name, String organizer, LocalDate date, int rating);
+    List<Event> getAllEvents();
 }

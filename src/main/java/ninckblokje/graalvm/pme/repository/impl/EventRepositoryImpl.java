@@ -24,12 +24,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot.repository.impl;
+package ninckblokje.graalvm.pme.repository.impl;
 
 import io.micronaut.configuration.hibernate.jpa.scope.CurrentSession;
 import io.micronaut.spring.tx.annotation.Transactional;
-import ninckblokje.graalvm.polyglot.domain.Event;
-import ninckblokje.graalvm.polyglot.repository.EventRepository;
+import ninckblokje.graalvm.pme.domain.Event;
+import ninckblokje.graalvm.pme.repository.EventRepository;
 
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;

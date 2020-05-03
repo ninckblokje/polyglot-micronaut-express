@@ -1,5 +1,5 @@
 profile: service
-defaultPackage: ninckblokje.graalvm.polyglot
+defaultPackage: ninckblokje.graalvm.pme
 ---
 testFramework: junit
 sourceLanguage: java

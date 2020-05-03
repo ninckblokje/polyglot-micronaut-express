@@ -24,74 +24,26 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ninckblokje.graalvm.polyglot.domain;
+package ninckblokje.graalvm.pme;
 
-import javax.persistence.*;
-import java.time.LocalDate;
+import ninckblokje.graalvm.pme.EmbeddedApplication;
+import ninckblokje.graalvm.pme.repository.EventRepository;
+import ninckblokje.graalvm.pme.service.EventService;
+import org.junit.jupiter.api.Test;
 
-@Entity
-@Table(name = "events")
-public class Event {
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class EmbeddedApplicationTest {
 
-    @Column(nullable = false)
-    private LocalDate date;
-    @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
-    private String organizer;
-    @Column(nullable = false)
-    private Integer rating;
+    @Test
+    public void test() {
+        EmbeddedApplication embeddedApplication = new EmbeddedApplication();
+        embeddedApplication.runEmmbedded();
 
-    public Event() {}
+        EventService eventService = embeddedApplication.getBean(EventService.class);
+        assertNotNull(eventService);
 
-    public Event(LocalDate date, String name, String organizer, Integer rating) {
-        this.date = date;
-        this.name = name;
-        this.organizer = organizer;
-        this.rating = rating;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOrganizer() {
-        return organizer;
-    }
-
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
+        EventRepository eventRepository = embeddedApplication.getBean(EventRepository.class);
+        assertNotNull(eventRepository);
     }
 }
