@@ -1,4 +1,12 @@
-FROM adoptopenjdk/openjdk13-openj9:jdk-13.0.2_8_openj9-0.18.0-alpine-slim
-COPY build/libs/polyglot-micronaut-express-*-all.jar polyglot-micronaut-express.jar
-EXPOSE 8080
-CMD ["java", "-Dcom.sun.management.jmxremote", "-Xmx128m", "-XX:+IdleTuningGcOnIdle", "-Xtune:virtualized", "-jar", "polyglot-micronaut-express.jar"]
+FROM oracle/graalvm-ce:20.0.0-java11
+
+EXPOSE 3000 8080
+
+RUN mkdir /polyglot-micronaut-express
+
+COPY build/libs/polyglot-micronaut-express-*-all.jar /polyglot-micronaut-express/build/libs/
+COPY src/main/node/ /polyglot-micronaut-express/src/main/node/
+
+WORKDIR /polyglot-micronaut-express/src/main/node
+
+CMD [ "npm", "run", "serve-jvm" ]

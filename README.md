@@ -39,3 +39,19 @@ code.
 
 The file [EmbeddedApplication.java](src/main/java/ninckblokje/graalvm/pme/EmbeddedApplication.java) starts Micronaut and provides the ability
 to retrieve beans from Micronaut's context.
+
+## Docker
+
+After build the project (see `Setup`) it is possible to build a Docker image using the provided [Dockerfile](Dockerfile).
+
+````
+docker build -t ninckblokje/polyglot-micronaut-express:1.0.0 .
+docker run -p 3000:3000 -p 8080:8080 ninckblokje/polyglot-micronaut-express:1.0.0
+````
+
+Or simply pull the image and run it:
+
+````
+docker pull ninckblokje/polyglot-micronaut-express:1.0.0
+docker run -p 3000:3000 -p 8080:8080 ninckblokje/polyglot-micronaut-express:1.0.0
+````
