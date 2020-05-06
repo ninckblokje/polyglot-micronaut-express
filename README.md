@@ -13,15 +13,18 @@ The project is still a bit unpolished, I might fix these issues later:
 ## Requirements
 
 - GraalVM CE 20.0 (or later) based on Java 11
+- SDKMAN (optional)
 
 GraalVM CE 20.0 does not offer a Node.js implementation on Windows.
 
 ## Setup
 
+If you are using SDKMAN then the following command will setup GraalVM: `sdk env`
+
 In the root of the project run the following command: `./gradlew assemble`
 In the folder `src/main/node` run the following commands:
-- `npm install`
-- `npm run serve-jvm`
+- `npm install` or `./gradlew npmInstall`
+- `npm run serve-jvm` or `./gradlew npmRunServeJvm`
 
 The application exposes the following URL's:
 

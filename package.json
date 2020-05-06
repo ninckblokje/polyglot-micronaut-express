@@ -2,10 +2,9 @@
   "name": "polyglot-micronaut-express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/main/node/index.js",
   "scripts": {
-    "serve-jvm": "node --jvm --vm.cp ../../../build/libs/polyglot-micronaut-express-1.0.0-all.jar index.js",
-    "serve": "node index.js"
+    "serve-jvm": "node --jvm --vm.cp ./build/libs/polyglot-micronaut-express-1.0.0-all.jar ./src/main/node/index.js"
   },
   "author": "ninckblokje",
   "license": "BSD-2-Clause",

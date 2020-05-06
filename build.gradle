@@ -64,3 +64,10 @@ tasks.withType(JavaExec) {
     jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
 }
 
+task npmInstall(type:Exec) {
+    commandLine 'npm', 'install'
+}
+
+task npmRunServeJvm(type:Exec) {
+    commandLine 'npm', 'run', 'serve-jvm'
+}
