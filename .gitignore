@@ -11,10 +11,11 @@ out/
 .project
 .settings
 .classpath
-node_modules
+node_modules/
 /src/main/vue/dist
 .env.local
 .env.*.local
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+bin/
