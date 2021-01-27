@@ -1,4 +1,4 @@
-FROM oracle/graalvm-ce:20.0.0-java11
+FROM docker.pkg.github.com/graalvm/container/community:20.0.0-java11-amd64
 
 EXPOSE 3000 8080
 

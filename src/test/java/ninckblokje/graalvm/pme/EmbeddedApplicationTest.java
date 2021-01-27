@@ -26,7 +26,6 @@
 
 package ninckblokje.graalvm.pme;
 
-import ninckblokje.graalvm.pme.EmbeddedApplication;
 import ninckblokje.graalvm.pme.repository.EventRepository;
 import ninckblokje.graalvm.pme.service.EventService;
 import org.junit.jupiter.api.Test;

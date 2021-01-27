@@ -48,13 +48,13 @@ to retrieve beans from Micronaut's context.
 After build the project (see `Setup`) it is possible to build a Docker image using the provided [Dockerfile](Dockerfile).
 
 ````
-docker build -t ninckblokje/polyglot-micronaut-express:1.0.0 .
-docker run -p 3000:3000 -p 8080:8080 ninckblokje/polyglot-micronaut-express:1.0.0
+docker build -t ninckblokje/polyglot-micronaut-express:1.0.1 .
+docker run -p 3000:3000 -p 8080:8080 ninckblokje/polyglot-micronaut-express:1.0.1
 ````
 
 Or simply pull the image and run it:
 
 ````
-docker pull ninckblokje/polyglot-micronaut-express:1.0.0
-docker run -p 3000:3000 -p 8080:8080 ninckblokje/polyglot-micronaut-express:1.0.0
+docker pull ninckblokje/polyglot-micronaut-express:1.0.1
+docker run -p 3000:3000 -p 8080:8080 ninckblokje/polyglot-micronaut-express:1.0.1
 ````
